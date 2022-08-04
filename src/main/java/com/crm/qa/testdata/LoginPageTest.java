@@ -9,6 +9,8 @@ import com.crm.qa.base.TestBase;
 import com.crm.qa.pages.HomePage;
 import com.crm.qa.pages.LoginPage;
 
+//import io.qameta.allure.Description;
+
 public class LoginPageTest extends TestBase {
 	LoginPage loginPage ;
 	HomePage homePage;
@@ -23,21 +25,25 @@ public class LoginPageTest extends TestBase {
 		loginPage = new LoginPage();
 	}
 	
-	@Test(priority = 1)
+	@Test(priority = 1, description= " verify the title of the page loaded")
+	//@Description("Test Description: Check the title ")
 	public void loginPageTitleTest() {
 		String title = loginPage.validateLoginPageTitle();
-		Assert.assertEquals(title, "Twitter Widget Iframe");
+		Assert.assertEquals(title, "Cogmento CRM");
 	}
 	
-	@Test(priority = 2)
-	public void crmLogoImgTest() {
-		boolean flag = loginPage.validateLogoImg();
-		Assert.assertTrue(flag);
-	}
-	
-	@Test(priority  = 3)
+//	@Test(priority = 2)
+//	public void crmLogoImgTest() throws InterruptedException {
+//		Thread.sleep(2000);
+//		boolean flag = loginPage.validateLogoImg();
+//		Assert.assertTrue(flag);
+//	}
+
+	@Test(priority  = 2)
 	public void loginTest() {
 		homePage = loginPage.login(prop.getProperty("email"),prop.getProperty("password"));
+		boolean flag = loginPage.validateLogoImg();
+		Assert.assertTrue(flag);
 		
 	}
 	

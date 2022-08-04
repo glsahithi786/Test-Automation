@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.crm.qa.base.TestBase;
 
+//import io.qameta.allure.Step;
+
 public class LoginPage extends TestBase {
 	
 	// Page Factory
@@ -23,7 +25,7 @@ public class LoginPage extends TestBase {
 	@FindBy(xpath = " //*[contains(text(),'Login')]")
 	WebElement loginBtn;
 	
-	@FindBy(xpath = "//*div[@class='header']")
+	@FindBy(xpath = "//div[@id='top-header-menu'] //div[@class='header item']")
 	WebElement logoImg;
 
 		//Initialising the Page Objects:
@@ -40,6 +42,7 @@ public class LoginPage extends TestBase {
 			return logoImg.isDisplayed();
 		}
 		
+		//@Step("Login Step with email: {0},password :{1},for method {method} step....")
 		public HomePage login(String un, String pwd){
 			email.sendKeys(un);
 			password.sendKeys(pwd);
